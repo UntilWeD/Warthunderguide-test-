@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".americamain"
-    >
-    <Button
-        android:id="@+id/maintitle_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="메인메뉴" />
+    android:orientation="vertical">
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/americafragmentframe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        >
+
+        <Button
+            android:id="@+id/americatankbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="지상전" />
+        <Button
+            android:id="@+id/americaplanebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="공중전" />
+        <Button
+            android:id="@+id/americabookmarkbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="북마크" />
+        <Button
+            android:id="@+id/americasearchbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="검색" />
+
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

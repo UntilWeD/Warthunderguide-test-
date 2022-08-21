@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         // 액티비티 화면 출력
 
 
+
         binding.titleamerica.setOnClickListener{
             var intent = Intent(this, americamain::class.java)
             startActivity(intent)
