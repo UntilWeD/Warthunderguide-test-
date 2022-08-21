@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.War_Thunder_Guide">
         <activity
+            android:name=".englandmain"
+            android:exported="false" />
+        <activity
+            android:name=".sovietmain"
+            android:exported="false" />
+        <activity
+            android:name=".germanymain"
+            android:exported="false" />
+        <activity
+            android:name=".americamain"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
