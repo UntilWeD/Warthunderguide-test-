@@ -17,13 +17,40 @@ class americamain : AppCompatActivity() {
         binding = ActivityAmericamainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+        transaction.add(R.id.americafragmentframe,americatank())
+        transaction.commit()
+
         binding.americatankbtn.setOnClickListener{
             val fragmentManager: FragmentManager = supportFragmentManager
             val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-            val fragment = americatank()
-            transaction.add(R.id.americafragmentframe, fragment)
+            transaction.replace(R.id.americafragmentframe,americatank())
             transaction.commit()
         }
+
+        binding.americaplanebtn.setOnClickListener{
+            val fragmentManager: FragmentManager = supportFragmentManager
+            val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.americafragmentframe, americaplane())
+            transaction.commit()
+        }
+
+        binding.americabookmarkbtn.setOnClickListener{
+            val fragmentManager: FragmentManager = supportFragmentManager
+            val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.americafragmentframe, americabookmark())
+            transaction.commit()
+        }
+
+        binding.americamenubtn.setOnClickListener{
+            val fragmentManager: FragmentManager = supportFragmentManager
+            val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.americafragmentframe, americamenu())
+            transaction.commit()
+        }
+
+
     }
 
 }
