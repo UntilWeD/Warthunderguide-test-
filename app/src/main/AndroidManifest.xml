@@ -19,7 +19,7 @@
             android:name=".germanymain"
             android:exported="false" />
         <activity
-            android:name=".americamain"
+            android:name="america.americamain"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

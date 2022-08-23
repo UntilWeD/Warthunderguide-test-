@@ -1,9 +1,10 @@
-package com.war_thunder_guide
+package america
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.war_thunder_guide.R
 import com.war_thunder_guide.databinding.ActivityAmericamainBinding
 
 class americamain : AppCompatActivity() {
@@ -19,13 +20,13 @@ class americamain : AppCompatActivity() {
 
         val fragmentManager: FragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-        transaction.add(R.id.americafragmentframe,americatank())
+        transaction.add(R.id.americafragmentframe, americatank())
         transaction.commit()
 
         binding.americatankbtn.setOnClickListener{
             val fragmentManager: FragmentManager = supportFragmentManager
             val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.americafragmentframe,americatank())
+            transaction.replace(R.id.americafragmentframe, americatank())
             transaction.commit()
         }
 

@@ -1,5 +1,6 @@
 package com.war_thunder_guide
 
+import america.americamain
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
