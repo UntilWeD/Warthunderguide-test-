@@ -1,21 +1,14 @@
 package america
 
-import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.service.autofill.Dataset
 import android.view.LayoutInflater
-import android.view.OnReceiveContentListener
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.war_thunder_guide.R
 import com.war_thunder_guide.databinding.AmericaTankRecyclerBinding
 
 
 
-class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
+class AmericaTankAdapter : RecyclerView.Adapter<AmericaTankAdapter.ViewHolder>() {
     private val dataSet: ArrayList<americatankdata> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,8 +16,8 @@ class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
         return ViewHolder(binding)
     }
 
-    fun addData(name: String, br:String){
-        dataSet.add(americatankdata(name,br))
+    fun addData(name: String, br:String, img:Drawable){
+        dataSet.add(americatankdata(name,br,img))
         notifyItemInserted(dataSet.size)
     }
 
@@ -38,9 +31,12 @@ class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: AmericaTankRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
 
+
+
         fun bind(data:americatankdata) {
-            binding.americaTankName.text = "${data.name}"
-            binding.americaTankBr.text = "${data.br}"
+            binding.americaTankName.text = "이름 : ${data.name}"
+            binding.americaTankBr.text = "B.R : ${data.br}"
+            binding.americaTankImg.setImageDrawable(data.img)
         }
     }
 }
