@@ -4,6 +4,8 @@ import android.graphics.drawable.Drawable
 
 data class americatankdata(
         var name: String,
-        var br : String,
-        var img : Drawable
+        var  br : Double,
+        var img : Drawable,
+        val research : Int,
+        val price : Int
 )
