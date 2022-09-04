@@ -1,33 +1,35 @@
 package america
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+import com.war_thunder_guide.MainActivity
 import com.war_thunder_guide.R
 import com.war_thunder_guide.TankDetail
 import com.war_thunder_guide.databinding.FragmentAmericatankBinding
+import java.security.AccessController.getContext
+
 
 class americatank : Fragment() {
+
     private lateinit var binding : FragmentAmericatankBinding
-    private val rvAdapter = AmericaTankAdapter(requireContext())
+    private val rvAdapter = AmericaTankAdapter(activity)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         binding= FragmentAmericatankBinding.inflate(inflater, container, false)
         binding.americaTankProfile.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
@@ -40,12 +42,12 @@ class americatank : Fragment() {
         rvAdapter.addData("M19A1",5.0,R.drawable.m19a1,40000,150000)
         rvAdapter.addData("M4A3E2 (76) W",6.3,R.drawable.m4a3e276w,46000,170000)
 
-        val intent = Intent(this.context,americatank::class.java)
+
         //메서드에 객체전달
         rvAdapter.setOnItemClickListener(object : AmericaTankAdapter.OnItemClickListener{
             override fun onItemClick(view: View, data : americatankdata, position: Int)
             {
-                Intent(activity, TankDetail::class.java).apply{
+               Intent(requireContext(), TankDetail::class.java).apply{
                     putExtra("tankdata", data)
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }.run { startActivity(this) }

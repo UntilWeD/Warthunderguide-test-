@@ -17,7 +17,6 @@ import java.util.concurrent.RecursiveAction
 class AmericaTankAdapter(private val context: Context) : RecyclerView.Adapter<AmericaTankAdapter.ViewHolder>() {
     private val dataSet: ArrayList<americatankdata> = arrayListOf()
 
-
     //전달할 객체를 저장할 변수 정의
     private lateinit var itemClickListener : OnItemClickListener
 
@@ -57,7 +56,6 @@ class AmericaTankAdapter(private val context: Context) : RecyclerView.Adapter<Am
             binding.americaTankBr.text = "B.R : ${data.br}"
             binding.americaTankResearch.text = "연구비용: ${data.research}"
             binding.americaTankPrice.text = "비용 :${data.price}"
-
             Glide.with(context).load(data.img).into(binding.americaTankImg)
 
             val pos = adapterPosition
