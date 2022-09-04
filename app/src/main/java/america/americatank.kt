@@ -1,6 +1,7 @@
 package america
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -17,11 +18,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.war_thunder_guide.R
+import com.war_thunder_guide.TankDetail
 import com.war_thunder_guide.databinding.FragmentAmericatankBinding
 
 class americatank : Fragment() {
     private lateinit var binding : FragmentAmericatankBinding
-    private val rvAdapter = AmericaTankAdapter()
+    private val rvAdapter = AmericaTankAdapter(requireContext())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,20 +34,27 @@ class americatank : Fragment() {
         binding.americaTankProfile.adapter = rvAdapter
         binding.americaTankProfile.addItemDecoration(AmericaTankAdapterDecoration())
 
-        rvAdapter.addData("M4A2 셔먼",4.7,ContextCompat.getDrawable(requireActivity(),R.drawable.americam4a2)!!,18000,77000)
-        rvAdapter.addData("M36 GMC",5.3,ContextCompat.getDrawable(requireContext(),R.drawable.m36gmc)!!,63000,200000)
-        rvAdapter.addData("M4A3E2",5.3,ContextCompat.getDrawable(requireContext(),R.drawable.m4a3e2)!!,40000,150000)
-        rvAdapter.addData("M19A1",5.0,ContextCompat.getDrawable(requireContext(),R.drawable.m19a1)!!,40000,150000)
-        rvAdapter.addData("M4A3E2 (76) W",6.3,ContextCompat.getDrawable(requireContext(),R.drawable.m4a3e276w)!!,46000,170000)
+        rvAdapter.addData("M4A2 셔먼",4.7,R.drawable.americam4a2,18000,77000)
+        rvAdapter.addData("M36 GMC",5.3,R.drawable.m36gmc,63000,200000)
+        rvAdapter.addData("M4A3E2",5.3,R.drawable.m4a3e2,40000,150000)
+        rvAdapter.addData("M19A1",5.0,R.drawable.m19a1,40000,150000)
+        rvAdapter.addData("M4A3E2 (76) W",6.3,R.drawable.m4a3e276w,46000,170000)
 
-
+        val intent = Intent(this.context,americatank::class.java)
+        //메서드에 객체전달
+        rvAdapter.setOnItemClickListener(object : AmericaTankAdapter.OnItemClickListener{
+            override fun onItemClick(view: View, data : americatankdata, position: Int)
+            {
+                Intent(activity, TankDetail::class.java).apply{
+                    putExtra("tankdata", data)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }.run { startActivity(this) }
+            }
+        })
 
         return binding.root
     }
-
-
 }
-
 
 class AmericaTankAdapterDecoration : RecyclerView.ItemDecoration(){
     override fun getItemOffsets(
