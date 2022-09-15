@@ -24,13 +24,13 @@ import java.security.AccessController.getContext
 class americatank : Fragment() {
 
     private lateinit var binding : FragmentAmericatankBinding
-    private val rvAdapter = AmericaTankAdapter(activity)
+    private val rvAdapter = AmericaTankAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
     ): View? {
+
         binding= FragmentAmericatankBinding.inflate(inflater, container, false)
         binding.americaTankProfile.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         binding.americaTankProfile.adapter = rvAdapter

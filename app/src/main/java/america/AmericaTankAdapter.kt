@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import com.war_thunder_guide.databinding.AmericaTankRecyclerBinding
 import java.util.concurrent.RecursiveAction
 
-class AmericaTankAdapter(private val context: Context) : RecyclerView.Adapter<AmericaTankAdapter.ViewHolder>() {
+class AmericaTankAdapter() : RecyclerView.Adapter<AmericaTankAdapter.ViewHolder>() {
     private val dataSet: ArrayList<americatankdata> = arrayListOf()
 
     //전달할 객체를 저장할 변수 정의
@@ -22,6 +22,7 @@ class AmericaTankAdapter(private val context: Context) : RecyclerView.Adapter<Am
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = AmericaTankRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
         return ViewHolder(binding)
     }
 
@@ -50,13 +51,12 @@ class AmericaTankAdapter(private val context: Context) : RecyclerView.Adapter<Am
 
     inner class ViewHolder(val binding: AmericaTankRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
         //뷰홀더안에 있는 아이템 클릭리스너에서 인터페이스 객체의 메서드 호출 (이때 아이템뷰, position 전달)
-
         fun bind(data:americatankdata) {
             binding.americaTankName.text = "이름 : ${data.name}"
             binding.americaTankBr.text = "B.R : ${data.br}"
             binding.americaTankResearch.text = "연구비용: ${data.research}"
             binding.americaTankPrice.text = "비용 :${data.price}"
-            Glide.with(context).load(data.img).into(binding.americaTankImg)
+            Glide.with(binding.americaTankImg).load(data.img).into(binding.americaTankImg)
 
             val pos = adapterPosition
             if (pos !=RecyclerView.NO_POSITION){
